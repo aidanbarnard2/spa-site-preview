@@ -1,0 +1,379 @@
+{
+ "st-paul-skyline": {
+  "widths": [
+   960,
+   1920
+  ],
+  "ratio": 0.6665
+ },
+ "st-paul-historic": {
+  "widths": [
+   960,
+   1920
+  ],
+  "ratio": 0.366015625
+ },
+ "svc-connected-tv": {
+  "widths": [
+   800,
+   1400
+  ],
+  "ratio": 0.5625
+ },
+ "svc-youtube-tv": {
+  "widths": [
+   800,
+   1400
+  ],
+  "ratio": 0.5625
+ },
+ "svc-nfl-sunday-ticket": {
+  "widths": [
+   800,
+   1400
+  ],
+  "ratio": 0.5625
+ },
+ "svc-floyd-dsp": {
+  "widths": [
+   800,
+   1400
+  ],
+  "ratio": 0.5625
+ },
+ "svc-traditional-advertising": {
+  "widths": [
+   800,
+   1400
+  ],
+  "ratio": 0.5625
+ },
+ "svc-seo": {
+  "widths": [
+   800,
+   1400
+  ],
+  "ratio": 0.5625
+ },
+ "svc-ai-advertising": {
+  "widths": [
+   800,
+   1400
+  ],
+  "ratio": 0.5625
+ },
+ "svc-social-media-advertising": {
+  "widths": [
+   800,
+   1400
+  ],
+  "ratio": 0.5625
+ },
+ "svc-lead-generation": {
+  "widths": [
+   800,
+   1400
+  ],
+  "ratio": 0.5625
+ },
+ "svc-creative-services": {
+  "widths": [
+   800,
+   1400
+  ],
+  "ratio": 0.5625
+ },
+ "svc-sales-data-analysis": {
+  "widths": [
+   800,
+   1400
+  ],
+  "ratio": 0.5625
+ },
+ "production-set": {
+  "widths": [
+   700,
+   1100
+  ],
+  "ratio": 0.7018181818181818
+ },
+ "case-dahl-automotive": {
+  "widths": [
+   960,
+   1920
+  ],
+  "ratio": 0.3385416666666667
+ },
+ "case-dahl-automotive-card": {
+  "widths": [
+   800
+  ],
+  "ratio": 0.75
+ },
+ "case-borton-volvo": {
+  "widths": [
+   680
+  ],
+  "ratio": 0.6661764705882353
+ },
+ "case-sky-zone": {
+  "widths": [
+   800,
+   1600
+  ],
+  "ratio": 0.75
+ },
+ "case-sky-zone-kids": {
+  "widths": [
+   800,
+   1200
+  ],
+  "ratio": 0.75
+ },
+ "case-green-mill": {
+  "widths": [
+   800,
+   1600
+  ],
+  "ratio": 0.6666666666666666
+ },
+ "case-green-mill-brands": {
+  "widths": [
+   800,
+   1600
+  ],
+  "ratio": 0.5
+ },
+ "floyd-certificate": {
+  "widths": [
+   700,
+   1086
+  ],
+  "ratio": 0.861878453038674
+ },
+ "portrait-troy": {
+  "widths": [
+   554
+  ],
+  "ratio": 1.2707581227436824
+ },
+ "portrait-kelly": {
+  "widths": [
+   554
+  ],
+  "ratio": 1.2707581227436824
+ },
+ "featured-vfv": {
+  "widths": [
+   960,
+   1280
+  ],
+  "ratio": 0.5625
+ },
+ "video/374497324": {
+  "widths": [
+   640,
+   1280
+  ],
+  "ratio": 0.5625
+ },
+ "video/452278570": {
+  "widths": [
+   640,
+   1280
+  ],
+  "ratio": 0.5625
+ },
+ "video/452282559": {
+  "widths": [
+   640,
+   1280
+  ],
+  "ratio": 0.5625
+ },
+ "video/sc-auto": {
+  "widths": [
+   640,
+   1280
+  ],
+  "ratio": 0.5625
+ },
+ "video/sc-retail": {
+  "widths": [
+   640,
+   1280
+  ],
+  "ratio": 0.5625
+ },
+ "video/sc-services": {
+  "widths": [
+   640,
+   1280
+  ],
+  "ratio": 0.5625
+ },
+ "video/1214605341": {
+  "widths": [
+   640,
+   1280
+  ],
+  "ratio": 0.5625
+ },
+ "video/1214605449": {
+  "widths": [
+   640,
+   1280
+  ],
+  "ratio": 0.5625
+ },
+ "video/1214606874": {
+  "widths": [
+   640,
+   1280
+  ],
+  "ratio": 0.5625
+ },
+ "video/1214605534": {
+  "widths": [
+   640,
+   1280
+  ],
+  "ratio": 0.5625
+ },
+ "video/1214605347": {
+  "widths": [
+   640,
+   1280
+  ],
+  "ratio": 0.5625
+ },
+ "team/troy-alexander": {
+  "widths": [
+   480
+  ],
+  "ratio": 1
+ },
+ "team/kelly-flaherty": {
+  "widths": [
+   480
+  ],
+  "ratio": 1
+ },
+ "team/sophia-husnik": {
+  "widths": [
+   480
+  ],
+  "ratio": 1
+ },
+ "team/matt-molnar": {
+  "widths": [
+   480
+  ],
+  "ratio": 1
+ },
+ "team/steve-garbe": {
+  "widths": [
+   480
+  ],
+  "ratio": 1
+ },
+ "team/roy-lalime": {
+  "widths": [
+   480
+  ],
+  "ratio": 1
+ },
+ "team/mark-fisch": {
+  "widths": [
+   480
+  ],
+  "ratio": 1
+ },
+ "team/scott-fischler": {
+  "widths": [
+   480
+  ],
+  "ratio": 1
+ },
+ "team/riley-tuckner": {
+  "widths": [
+   480
+  ],
+  "ratio": 1
+ },
+ "team/rebecca-stephens": {
+  "widths": [
+   480
+  ],
+  "ratio": 1
+ },
+ "team/deb-dornack": {
+  "widths": [
+   480
+  ],
+  "ratio": 1
+ },
+ "team/barb-zeleny": {
+  "widths": [
+   480
+  ],
+  "ratio": 1
+ },
+ "team/penny-hanson": {
+  "widths": [
+   480
+  ],
+  "ratio": 1
+ },
+ "team/alex-hofstad": {
+  "widths": [
+   480
+  ],
+  "ratio": 1
+ },
+ "team/aidan-barnard": {
+  "widths": [
+   480
+  ],
+  "ratio": 1
+ },
+ "team/evan-harrold": {
+  "widths": [
+   480
+  ],
+  "ratio": 1
+ },
+ "team/scott-madson": {
+  "widths": [
+   480
+  ],
+  "ratio": 1
+ },
+ "team/jason-trimble": {
+  "widths": [
+   480
+  ],
+  "ratio": 1
+ },
+ "team/jeff-ihlan": {
+  "widths": [
+   480
+  ],
+  "ratio": 1
+ },
+ "team/maria-garbe": {
+  "widths": [
+   480
+  ],
+  "ratio": 1
+ },
+ "floyd-badge": {
+  "widths": [
+   240,
+   480,
+   720,
+   960
+  ],
+  "ratio": 1
+ }
+}
