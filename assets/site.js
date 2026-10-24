@@ -95,12 +95,30 @@
       var isOpen = wrap.classList.toggle('open');
       toggle.setAttribute('aria-expanded', String(isOpen));
       toggle.textContent = isOpen ? 'Show fewer' : toggle.dataset.label;
+      if (!isOpen) { var top = wrap.getBoundingClientRect().top; if (top < 0) window.scrollBy({ top: top - 110, behavior: reduce ? 'instant' : 'smooth' }); }
     }
   });
 
   doc.addEventListener('keydown', function (ev) {
-    if (ev.key === 'Escape') closeMenus();
+    if (ev.key !== 'Escape') return;
+    var openLi = doc.querySelector('.nav .has-menu.open');
+    closeMenus();
+    if (openLi && openLi.contains(doc.activeElement)) { var nb = openLi.querySelector('.nav-btn'); if (nb) nb.focus(); }
+    var mob = doc.getElementById('mobile-nav'), bg = doc.querySelector('.burger');
+    if (mob && !mob.hidden && !doc.querySelector('dialog[open]')) { mob.hidden = true; if (bg) { bg.setAttribute('aria-expanded', 'false'); bg.focus(); } }
   });
+  // a dropdown closes once keyboard focus moves out of it
+  doc.addEventListener('focusout', function (ev) {
+    var li = ev.target.closest && ev.target.closest('.nav .has-menu.open');
+    if (li && ev.relatedTarget && !li.contains(ev.relatedTarget)) closeMenus();
+  });
+  // mark the current page in the menus
+  (function () {
+    var here = location.pathname.replace(/index\.html$/, '');
+    doc.querySelectorAll('.nav a[href], .mobile-nav a[href]').forEach(function (a) {
+      if (a.getAttribute('href') === here) a.setAttribute('aria-current', 'page');
+    });
+  })();
 
   /* ---- evaluation dialog ---- */
   var lastFocus = null;
@@ -114,7 +132,9 @@
     var mob = doc.getElementById('mobile-nav');
     if (mob && !mob.hidden) { mob.hidden = true; doc.querySelector('.burger').setAttribute('aria-expanded', 'false'); }
     if (typeof dlg.showModal === 'function') dlg.showModal(); else dlg.setAttribute('open', '');
-    var first = dlg.querySelector('input:not([type=hidden]):not([name=bot-field])');
+    // on touch screens, don't pop the keyboard up before the visitor has read the form
+    var touch = window.matchMedia && window.matchMedia('(pointer: coarse)').matches;
+    var first = touch ? dlg.querySelector('#eval-title') : dlg.querySelector('input:not([type=hidden]):not([name=bot-field])');
     if (first) first.focus();
   }
   function closeEval() {
@@ -149,6 +169,7 @@
     box.innerHTML = '';
     box.appendChild(frame);
     if (typeof dlg.showModal === 'function') dlg.showModal(); else dlg.setAttribute('open', '');
+    var x = dlg.querySelector('[data-close-player]'); if (x) x.focus();
   }
   function closePlayer() {
     var dlg = doc.getElementById('player');
@@ -215,9 +236,24 @@
     var btn = form.querySelector('[type=submit]');
     msg.className = 'form-msg';
     msg.textContent = '';
+    form.querySelectorAll('[data-url]').forEach(function (f) {
+      var v = f.value.trim();
+      if (v && !/^https?:\/\//i.test(v)) f.value = 'https://' + v;
+    });
     var svc = form.querySelector('input[name="services"]');
     if (svc) svc.value = [].map.call(form.querySelectorAll('[data-service]:checked'), function (c) { return c.value; }).join(', ');
-    if (!form.checkValidity()) { form.reportValidity(); return; }
+    if (!form.checkValidity()) {
+      var bad = form.querySelector(':invalid');
+      msg.className = 'form-msg err';
+      var lab = bad && bad.labels && bad.labels[0] ? bad.labels[0].textContent.replace(/\(optional\)/, '').trim() : '';
+      msg.textContent = !bad ? 'Please check the form.' :
+        bad.type === 'checkbox' ? 'Please tick the box to agree to the privacy policy.' :
+        bad.validity && bad.validity.typeMismatch && bad.type === 'email' ? 'Please enter a full email address, like you@business.com.' :
+        'Please fill in ' + (lab ? lab.toLowerCase() : 'the required fields') + '.';
+      form.reportValidity();
+      if (bad && bad.focus) bad.focus();
+      return;
+    }
     if (window.SPA_PREVIEW || window.SPA_FORMS_OFF) {
       msg.className = 'form-msg err';
       msg.textContent = 'Preview only. This form starts sending once the site is live.';
@@ -348,6 +384,7 @@
         toggle.setAttribute('aria-pressed', String(paused));
         track('hero_video_toggle', { state: paused ? 'paused' : 'playing' });
         toggle.querySelector('span').textContent = paused ? 'Play video' : 'Pause video';
+        root.classList.toggle('motion-paused', paused);
         sync();
         schedule();
       });
@@ -511,6 +548,22 @@
     });
   }
   initMonitors();
+  (function autoMonitor() {
+    if (reduce || !window.matchMedia || !matchMedia('(hover: none)').matches || !('IntersectionObserver' in window)) return;
+    doc.querySelectorAll('[data-monitor]').forEach(function (wrap) {
+      var rows = [].slice.call(wrap.querySelectorAll('.rate-row')), t = null;
+      if (rows.length < 2) return;
+      new IntersectionObserver(function (es) {
+        clearInterval(t);
+        if (!es[0].isIntersecting) return;
+        t = setInterval(function () {
+          if (doc.hidden || root.classList.contains('motion-paused')) return;
+          var on = wrap.querySelector('.rate-row.on-air'), i = rows.indexOf(on);
+          tune(rows[(i + 1) % rows.length]);
+        }, 3200);
+      }, { threshold: 0.4 }).observe(wrap.querySelector('.monitor') || wrap);
+    });
+  })();
 
   /* =================== NEXT LEVEL =================== */
   var fine = window.matchMedia && window.matchMedia('(pointer: fine)').matches;
@@ -527,6 +580,7 @@
       var p = Math.min(1, Math.max(0, y / docMax));
       playhead.style.setProperty('--p', p.toFixed(4));
       playhead.style.setProperty('--px', ((phW - 6) * p).toFixed(1) + 'px');
+      playhead.classList.toggle('moved', p > 0.002);
     }
     var s = y > 24;
     if (head && s !== scrolled) { scrolled = s; head.classList.toggle('is-scrolled', s); }
@@ -704,7 +758,7 @@
     ['pointerdown', 'keydown', 'wheel', 'touchstart'].forEach(function (ev) { window.addEventListener(ev, skip, { passive: true }); });
     // hold the seal on screen long enough to read it, even on a slow connection
     var img = seal.querySelector('img'), late = !(img && img.complete);
-    function ready() { setTimeout(function () { fly(false); }, Math.max(150, 1350 - performance.now(), late ? 900 : 0)); }
+    function ready() { setTimeout(function () { fly(false); }, Math.max(150, 1000 - performance.now(), late ? 700 : 0)); }
     if (img && !img.complete) { img.addEventListener('load', ready); img.addEventListener('error', ready); } else ready();
     setTimeout(function () { fly(true); }, 3600);
     setTimeout(finish, 4400);
