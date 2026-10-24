@@ -1029,7 +1029,7 @@ dialog.player::backdrop { background: rgba(3, 6, 18, .86); }
 
 @media (max-width: 900px) {
   .hero-video { min-height: auto; }
-  .hero-shade { background: linear-gradient(0deg, rgba(8, 16, 31, .96) 0%, rgba(14, 24, 48, .82) 45%, rgba(14, 24, 48, .7) 100%); }
+  .hero-shade { background: linear-gradient(0deg, rgba(8, 16, 31, .97) 0%, rgba(14, 24, 48, .9) 45%, rgba(14, 24, 48, .86) 100%); }
   .hero-content { padding-block: 48px 24px; }
   .hero-onair { padding-bottom: 14px; }
 }
@@ -1556,7 +1556,9 @@ p, li, dd, dt, figcaption, .case-label { text-wrap: pretty; }
 .marquee:focus-within .marquee-track { animation-play-state: paused; }
 
 /* the intro's TV switch-on stands in for the hero's own, so it doesn't play twice */
-.ident-on .hero-media, .ident-done .hero-media, .ident-on .hero-media::after, .ident-done .hero-media::after { animation: none !important; }
+.ident-on .hero-media, .ident-done .hero-media { animation: none !important; }
+/* the switch-on flash is only drawn while it animates; with the intro it never plays, so it must not be drawn at all */
+.ident-on .hero-media::after, .ident-done .hero-media::after { content: none !important; display: none !important; }
 
 /* focus rings read on dark bands */
 .band-studio :focus-visible, .hero-video :focus-visible, .orbit-band :focus-visible, .site-foot :focus-visible, .hero-404 :focus-visible, dialog.player :focus-visible { outline-color: var(--white); }
