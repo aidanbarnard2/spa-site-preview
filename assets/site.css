@@ -12,7 +12,7 @@
   --sky: #5EA6F3;          /* SPA accent blue: actions and highlights on dark */
   --sky-hover: #84BBF7;
   --slate: #7585A8;        /* SPA text blue-grey */
-  --paper: #F2F4F7;
+  --paper: #EAF1FB;       /* pale SPA blue for light sections */
   --white: #FFFFFF;
   --line: #DEE1E6;         /* SPA light grey */
   --field: #C3C9D4;
@@ -1619,3 +1619,72 @@ p, li, dd, dt, figcaption, .case-label { text-wrap: pretty; }
 /* footer wordmark: room for the descenders above the color bar, and a flat seal */
 .foot-wordmark::after { margin-top: .24em; }
 .foot-seal { filter: none; }
+
+/* =====================================================================
+   NAVY PASS (Oct 23, night): more SPA navy and blue, text kept strong.
+   Every text color below is checked by tools/contrast_audit.py.
+   ===================================================================== */
+
+/* header bar: SPA navy */
+.site-head { background: var(--studio); border-bottom-color: rgba(255, 255, 255, .14); }
+.site-head .logo { color: var(--white); }
+.site-head .logo-badge { filter: drop-shadow(0 3px 8px rgba(0, 0, 0, .45)); }
+.site-head .nav-btn, .site-head .nav-link, .site-head .head-phone { color: var(--white); }
+.site-head .nav-btn:hover, .site-head .nav-link:hover, .site-head .has-menu.open > .nav-btn { background: rgba(255, 255, 255, .1); }
+.site-head .nav-link::after, .site-head .nav-btn::after { background: var(--sky); }
+.head-cta .btn-signal { background: var(--sky); border-color: var(--sky); color: var(--ink); }
+.head-cta .btn-signal:hover { background: var(--sky-hover); border-color: var(--sky-hover); }
+.site-head .burger { background: transparent; border-color: rgba(255, 255, 255, .5); }
+.site-head .burger-lines, .site-head .burger-lines::before, .site-head .burger-lines::after { background: var(--white); }
+.site-head .burger[aria-expanded="true"] .burger-lines { background: transparent; }
+.site-head .nav a[aria-current="page"] b { text-decoration-color: var(--sky); }
+/* the dropdowns and phone menu stay white panels with navy text */
+.site-head .menu, .site-head .mobile-nav { color: var(--ink); }
+.site-head :focus-visible { outline-color: var(--white); }
+.site-head .menu :focus-visible, .site-head .mobile-nav :focus-visible { outline-color: var(--focus); }
+
+/* inner page heroes: navy with a blue glow behind the seal or the visual */
+.hero-page, .hero-service {
+  background: radial-gradient(55% 85% at 82% 45%, rgba(35, 57, 117, .9), rgba(35, 57, 117, 0) 72%), var(--studio);
+  color: var(--white); border-bottom: 0; }
+.hero-page h1, .hero-service h1, .hero-page .lede, .hero-service .lede,
+.hero-page .hero-kicker, .hero-service .hero-kicker, .hero-page .hero-points li, .hero-service .hero-points li { color: var(--white); }
+.hero-page .ico-check, .hero-service .ico-check { color: var(--sky); }
+.hero-page .crumbs ol, .hero-service .crumbs ol, .hero-page .crumbs li + li::before, .hero-service .crumbs li + li::before { color: var(--white); }
+.hero-page .crumbs a, .hero-service .crumbs a { color: var(--white); text-decoration: underline; text-decoration-color: rgba(94, 166, 243, .9); text-underline-offset: 3px; }
+.hero-page .lede a, .hero-service .lede a { color: var(--white); }
+.hero-page .btn-signal, .hero-service .btn-signal { background: var(--sky); border-color: var(--sky); color: var(--ink); }
+.hero-page .btn-signal:hover, .hero-service .btn-signal:hover { background: var(--sky-hover); border-color: var(--sky-hover); }
+.hero-page .btn-line, .hero-service .btn-line { color: var(--white); border-color: rgba(255, 255, 255, .75); }
+.hero-page .btn-line:hover, .hero-service .btn-line:hover { background: var(--white); border-color: var(--white); color: var(--ink); }
+.hero-page :focus-visible, .hero-service :focus-visible { outline-color: var(--white); }
+.hero-page .fine, .hero-service .fine, .hero-service .screen-fig figcaption, .hero-service .panel-fig figcaption,
+.hero-service figcaption, .hero-service .launch-cap { color: var(--white); }
+/* captions pinned to a hero card sit on their own light chip, so they stay navy */
+.hero-service .stage-card figcaption { color: var(--ink); }
+.hero-service .telemetry { border-top-color: rgba(255, 255, 255, .35); }
+.hero-service .telemetry dt, .hero-service .telemetry dd { color: var(--white); }
+.hero-case .case-hero-stat { border-top-color: rgba(255, 255, 255, .7); }
+.hero-case .case-num, .hero-case .case-hero-stat .case-label { color: var(--white); }
+.page-seal .station-rings i { border-color: var(--sky); }
+.page-seal-img { filter: drop-shadow(0 22px 40px rgba(0, 0, 0, .55)); }
+.hero-case .case-hero-photo { box-shadow: 0 30px 60px -30px rgba(0, 0, 0, .7); }
+
+/* a second dark band color: SPA logo blue */
+.band-blue { background: var(--brand); }
+.band-blue .eyebrow { color: var(--white); }
+.band-blue .featured-media { box-shadow: 0 34px 60px -30px rgba(0, 0, 0, .6); }
+
+/* components that now sit on navy or blue bands */
+.band-studio .eyebrow { color: var(--white); }
+.band-studio .grid-list li, .band-studio .trio li { border-top-color: rgba(255, 255, 255, .7); }
+.band-studio .grid-list p, .band-studio .trio p { color: var(--white); }
+.band-studio .grid-list li:hover h3 { color: var(--sky); }
+.band-studio .steps li { border-top-color: rgba(255, 255, 255, .35); }
+.band-studio .btn-line { color: var(--white); border-color: rgba(255, 255, 255, .75); }
+.band-studio .btn-line:hover { background: var(--white); border-color: var(--white); color: var(--ink); }
+.band-studio .prose a, .band-studio .lede a { color: var(--white); }
+.band-studio .split-video h2, .band-studio .split-video .lede { color: var(--white); }
+
+/* pale blue sections: cards and lines read against the blue */
+.band-paper .rel, .band-paper .industries li, .band-paper .partners li { background: var(--white); }
