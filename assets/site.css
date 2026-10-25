@@ -644,8 +644,11 @@ dialog.eval::backdrop { background: rgba(6, 10, 28, .62); }
 .foot-base p { margin: 0; }
 .foot-legal { list-style: none; display: flex; gap: 20px; padding: 0; margin: 0 auto 0 0; }
 .foot-legal a { color: var(--on-dark-muted); }
-.credit { display: inline-flex; align-items: center; gap: 10px; color: var(--on-dark); text-decoration: none; font-weight: 650; }
-.credit:hover span:first-child { text-decoration: underline; }
+.foot-base .credit { color: var(--on-dark); font-weight: 650; line-height: 1.6; }
+.credit a { color: var(--on-dark); text-decoration: none; }
+.credit a:hover, .credit-ab:hover span { text-decoration: underline; }
+.credit-ab { display: inline-flex; align-items: center; gap: 10px; vertical-align: baseline; }
+.credit-ab:hover { text-decoration: none; }
 .credit-logo { width: auto; height: 26px; }
 
 .mobile-bar { display: none; position: fixed; left: 0; right: 0; bottom: 0; z-index: 60; gap: 8px; padding: 10px max(12px, env(safe-area-inset-right, 0px)) calc(10px + env(safe-area-inset-bottom, 0px)) max(12px, env(safe-area-inset-left, 0px)); background: var(--white); border-top: 1px solid var(--line); box-shadow: 0 -10px 24px -18px rgba(14, 24, 56, .4); }
